@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Pago</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Asegúrate de tener un archivo CSS si quieres estilizar la página -->
+</head>
+<body>
+    <div class="container">
+        <h1>Plan Premium</h1>
+        <p>Disfruta de nuestro plan premium con acceso ilimitado a todas las funciones.</p>
+        <ul>
+            <li>Stocks</li>
+            <li>Cripto</li>
+            <li>Forex</li>
+        </ul>
+        <p>Precio: $50 USD</p>
+        
+        <form action="payment.php" method="POST">
+            <input type="hidden" name="price_amount" value="100.00">
+            <input type="hidden" name="price_currency" value="USD">
+            <input type="hidden" name="pay_currency" value="BTC">
+            <button type="submit">Pagar</button>
+        </form>
+    </div>
+</body>
+</html>

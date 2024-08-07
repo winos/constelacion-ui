@@ -1,0 +1,17 @@
+{
+    "name": "fidubit/constelacion",
+    "autoload": {
+        "psr-4": {
+            "Fidubit\\Constelacion\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "winos",
+            "email": "dawinos@gmail.com"
+        }
+    ],
+    "require": {
+        "coinpaymentsnet/coinpayments-php": "^1.4"
+    }
+}
