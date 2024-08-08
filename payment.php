@@ -5,6 +5,13 @@ error_reporting(E_ALL);
 require 'vendor/autoload.php';
 require __DIR__ . '/vendor/coinpaymentsnet/coinpayments-php/src/CoinpaymentsAPI.php'; 
 require(__DIR__ .'/src/keys.php');
+
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 $cps_api = new CoinpaymentsAPI($private_key, $public_key, 'json');
 
 // Enter amount for the transaction

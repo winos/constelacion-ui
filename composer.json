@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "coinpaymentsnet/coinpayments-php": "^1.4"
+        "coinpaymentsnet/coinpayments-php": "^1.4",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
