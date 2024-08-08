@@ -1,31 +1,51 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require 'vendor/autoload.php';
 require __DIR__ . '/vendor/coinpaymentsnet/coinpayments-php/src/CoinpaymentsAPI.php'; 
 require(__DIR__ .'/src/keys.php');
+$cps_api = new CoinpaymentsAPI($private_key, $public_key, 'json');
 
-// Obtener datos del formulario
-$price_amount = $_POST['price_amount'];
-$price_currency = $_POST['price_currency'];
-$pay_currency = $_POST['pay_currency'];
+// Enter amount for the transaction
+// This would be the price for the product or service that you're selling
+$amount = 10.00;
 
-// Crear un cliente Nowpayments
-$client = new CoinpaymentsAPI($private_key, $public_key, 'json');
+// The currency for the amount above (original price)
+$currency1 = 'USD';
 
+// Litecoin Testnet is a no value currency for testing
+// The currency the buyer will be sending equal to amount of $currency1
+$currency2 = 'USDT.TRC20';
+
+// Enter buyer email below
+$buyer_email = 'winos@gmail.com';
+
+// Set a custom address to send the funds to.
+// Will override the settings on the Coin Acceptance Settings page
+$address = '';
+
+// Enter a buyer name for later reference
+$buyer_name = 'John Blockchain';
+
+// Enter additional transaction details
+$item_name = 'Fancy Dongle';
+$item_number = '2018';
+$custom = 'Express order';
+$invoice = 'JB-2018-1';
+$ipn_url = 'https://not-a-real-website.com/your_ipn_handler_script.php';
+
+// Make call to API to create the transaction
 try {
-    // Crear el pago
-    $payment = $client->createPayment([
-        'price_amount' => $price_amount,
-        'price_currency' => $price_currency,
-        'pay_currency' => $pay_currency,
-        'ipn_callback_url' => 'https://tu_dominio.com/ipn_handler.php', // Asegúrate de cambiar esto por tu URL real
-        'order_id' => '1234', // Puedes generar un ID único para cada pedido
-        'order_description' => 'Pago por plan premium',
-    ]);
-
-    // Redirigir al usuario a la URL de pago
-    header('Location: ' . $payment['pay_url']);
-    exit();
+    $transaction_response = $cps_api->CreateComplexTransaction($amount, $currency1, $currency2, $buyer_email, $address, $buyer_name, $item_name, $item_number, $invoice, $custom, $ipn_url);
 } catch (Exception $e) {
-    echo "Error al crear el pago: " . $e->getMessage();
+    echo 'Error: ' . $e->getMessage();
+    exit();
 }
-?>
+
+// Output the response of the API call
+if ($transaction_response["error"] == "ok") {
+    var_dump($transaction_response);
+} else {
+    echo $transaction_response["error"];
+}

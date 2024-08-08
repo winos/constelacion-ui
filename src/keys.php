@@ -2,8 +2,8 @@
 // For example scripts and PHPUnit testing.
 // Populate your keys below and then rename this file to "keys.php"
 // Generate and edit your key permissions here: https://www.coinpayments.net/acct-api-keys
-$private_key = '';
-$public_key = '';
+$private_key = '3d99f6a870FE2f6E57A12ff825f0c666Ee8f838172A3e546F72a7c47dD6818dC';
+$public_key = '1ce27f3f88f3abcd90669ac2211dadb51111d7f7856c7b0026bbeef9e05ef55c';
 
 // The following variables are only needed for running tests of the PHPUnit CoinpaymentsAPITest class or if you wish to use the constants defined at the bottom of this file for your own testing.
 // A LTCT address to send from
