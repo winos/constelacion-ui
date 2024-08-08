@@ -26,7 +26,7 @@ $currency1 = 'USD';
 $currency2 = 'USDT.TRC20';
 
 // Enter buyer email below
-$buyer_email = 'winos@gmail.com';
+$buyer_email = 'sure@gmail.com';
 
 // Set a custom address to send the funds to.
 // Will override the settings on the Coin Acceptance Settings page
